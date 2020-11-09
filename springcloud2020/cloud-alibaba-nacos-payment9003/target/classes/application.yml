@@ -1,0 +1,24 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: nacos-alibaba-payment
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource      #当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver        #mysql驱动包
+    url: jdbc:mysql://39.96.6.49:3306/cloud2020?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: mysql123456
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.springcloud.entity       #所有Entity别名类所在包
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

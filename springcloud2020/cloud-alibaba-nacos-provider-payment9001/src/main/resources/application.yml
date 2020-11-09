@@ -1,0 +1,14 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: alibaba-nacos-provider-payment9001   # 微服务名称
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848  # 配置Nacos监控地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'  # 监控所有请求

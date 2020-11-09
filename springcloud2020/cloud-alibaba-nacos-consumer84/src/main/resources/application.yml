@@ -1,0 +1,32 @@
+server:
+  port: 84
+
+spring:
+  application:
+    name: nacos-consumer-order84
+
+
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+        #namespace: ffee2bbe-5ba5-4e6e-a822-6a00abe11769  #命名空间的id
+
+    #sentinel配置
+    sentinel:
+      transport:
+        #client-ip: 127.0.0.1 #客户端IP（指定部署springboot项目云服务器的外网IP）
+        dashboard: 127.0.0.1:8085   #sentinel的地址
+        port: 8719 #默认端口，假如被占用会自动从8719开始依次+1扫描，直至找到没有被占用的端口
+
+
+
+
+
+
+#激活sentinel对feign的支持
+feign:
+  sentinel:
+    enabled: true
+

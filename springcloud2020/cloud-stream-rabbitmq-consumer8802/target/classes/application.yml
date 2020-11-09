@@ -1,0 +1,22 @@
+server:
+  port: 8802
+spring:
+  cloud:
+    stream:
+      binders:
+        defaultRabbit:
+          type: rabbit
+          environment:                                      #配置rabbimq连接环境
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+      bindings:
+        input:                                              #生产者绑定，这个是消息通道的名称
+          group: group-A                                    #该项目节点为消息组group-A的一个消费端
+          destination: exchange-msg                         #exchange名称,交换模式默认是topic;把SpringCloud stream的消息输入通道绑定到RabbitMQ的exchange-msg交换器。
+          content-type: application/json
+  application:
+    name: streamConsumer8802
